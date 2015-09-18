@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Classe para unificar a configuração e acesso ao banco de dados.
+ * @Classe: para unificar a configuração e acesso ao banco de dados.
  */
 class Conexao {
     /*
@@ -18,6 +18,12 @@ class Conexao {
     // nome do banco de dados
     private static $bd = "eleicao_gremio2015";
 
+    /*
+     * @Método: cria e inicia conexão com banco de dados.
+     * @Retorno: link de conexão (para ser usado nos parâmeros mysqli_*)
+     *          OU
+     *           aplicação die() e exibe erro.
+     */
     public static function criar() {
         $link = mysqli_connect($host, $usuario, $senha);
         
