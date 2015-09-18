@@ -1,6 +1,7 @@
-CREATE DATABASE sistemaeleitoral
+CREATE DATABASE eleicao_gremio2015;
+USE eleicao_gremio2015;
 
-CREATE TABLE IF NOT EXISTS 'eleitor'(
+CREATE TABLE IF NOT EXISTS 'usuario'(
 	'id_aluno' NOT NULL AUTO_INCREMENT,
 	'matricula' varchar(14) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
 	'voto' INTEGER FOREIGN KEY (voto) REFERENCES chapa(id_chapa) NOT NULL ,
@@ -13,7 +14,3 @@ CREATE TABLE IF NOT EXISTS 'chapa'(
 	'nome_chapa' varchar(10) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
 	PRIMARY KEY ('id_chapa')
 )
-
-INSERT INTO 'chapa'('id_chapa', 'nome_chapa') VALUES
-(1,'SUPER AÇÃO'), 
-(2, 'IAE');
