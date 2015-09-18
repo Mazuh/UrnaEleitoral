@@ -39,9 +39,9 @@
             <div class="panel-footer">
                 <p>
                     <a href="https://opensource.org/licenses/MIT">MIT License (MIT)</a> 
-                    Copyright (c)
+                    Copyright (c) 2015
                     <a href="https://github.com/Mazuh/UrnaEleitoral-GremioIFRNZN">
-                        2015 Marcell Guilherme & Yuri Henrique
+                        Marcell Guilherme & Yuri Henrique
                     </a>
                 </p> 
             </div>
