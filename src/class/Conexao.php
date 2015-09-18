@@ -25,13 +25,15 @@ class Conexao {
      *           aplicação die() e exibe erro.
      */
     public static function criar() {
-        $link = mysqli_connect($host, $usuario, $senha);
+        
+        $link = mysqli_connect(self::$host, self::$usuario, self::$senha) 
+                or die("Falha ao tentar acessar banco de dados.");
         
         if (!$link) {
-            die("Erro: " . mysql_error($link));
+            die("Falha ao tentar acessar banco de dados.");
         } else {
-            if (!mysqli_select_db($link, $bd)) {
-                die("Erro: " . mysql_error($link));
+            if (!mysqli_select_db($link, self::$bd)) {
+                die("Erro ao tentar selecionar banco de dados");
             }
         }
         
@@ -40,5 +42,7 @@ class Conexao {
     }
 
 }
+
+$con = Conexao::criar();
 
 ?>
