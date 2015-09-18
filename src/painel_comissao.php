@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Cadastrar/Ver votação</title>
+        <title>Painel da Comissão</title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,13 @@
                 </form>
             </div>
             <div class="panel-footer">
-                <p>Marcell Guilherme & Yuri Sales 2015</p>  
+                <p>
+                    <a href="https://opensource.org/licenses/MIT">MIT License (MIT)</a> 
+                    Copyright (c)
+                    <a href="https://github.com/Mazuh/UrnaEleitoral-GremioIFRNZN">
+                        2015 Marcell Guilherme & Yuri Henrique
+                    </a>
+                </p> 
             </div>
         </div>
         </div>
