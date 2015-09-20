@@ -3,10 +3,11 @@
 include "Conexao.php";
 
 /*
- * @Classe: objeto de acesso ao banco de dados (DAO)
- * Representa tabela de usuários.
+ * @Classe: as instâncias serão cada eleitor, com seus devidos poderes e atributos;
+ *          também é oobjeto de acesso ao banco de dados (DAO)
+ * @Tabela: usuario
  */
-class Eleitor{
+class Eleitor extends Conexao{
     
     // representa chave primária do banco de dados, identificador único
     private $id;    
@@ -41,26 +42,43 @@ class Eleitor{
         return true;
     }
     
+    
     /*
-     * @Método: salva as alterações da instância no banco de dados
-     *          (cria uma nova linha no banco ou a altera, se existir).
-     * @Parâmetros: nenhum, usa os atributos da instância.
-     * @Retorno: true se os atributos serem válidos e a persistência ocorrer
-     * com sucesso; false se ocorrer algum erro de integridade ou acesso.
-     */
+    * @Override
+    */
     public function persistir(){
+        // TODO
+    }/*
+    
+    * @Override
+    */
+    protected function atualizar(){
         // TODO
     }
     
     /*
-     * @Método: realiza a consulta na tabela do bd.
-     * @Parâmetros: identificador por array
+    * @Override
+    */
+    protected function criar(){
+        // TODO
+    }
+    
+    /*
+    * @Override
+    */
+    public static function getConsulta($idPk = null){
+        // TODO
+    }
+    
+    /*
+     * @Método: realiza operação select no bd com filtro por campo matrícula.
+     * @Parâmetros: valor do campo matrícula
      * @Retorno: o mesmo tipo que o retorno de mysqli_query.
-     *          A consulta retornará tudo se $id for inválido e/ou inexistir,
-     *          Ou filtra a consulta, se $id for válido.
+     *          A consulta retornará tudo se $matricula for inválida e/ou inexistir,
+     *          Ou filtra a consulta, se $matricula for válida.
      */
-    public static function getConsulta($id = null){
-        // TODO 
+    public static function getConsultaPorMatricula($matricula){
+        // TODO
     }
     
 }

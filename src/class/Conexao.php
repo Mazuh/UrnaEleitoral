@@ -3,7 +3,7 @@
 /*
  * @Classe: para unificar a configuração e acesso ao banco de dados.
  */
-class Conexao {
+abstract class Conexao {
     /*
      * README: atributos configurados apenas pro ambiente de desenvolvimento;
      *      basta mudá-los quando for pra produção.
@@ -14,7 +14,7 @@ class Conexao {
     private static $host = "localhost";
     // autenticação de acesso ao banco
     private static $usuario = "root";
-    private static $senha = "";
+    private static $senha = "root";
     // nome do banco de dados
     private static $bd = "eleicao_gremio2015";
 
@@ -24,7 +24,7 @@ class Conexao {
      *          OU
      *           aplicação die() e exibe erro.
      */
-    public static function criar() {
+    protected static function getConexao() {
         
         $link = mysqli_connect(self::$host, self::$usuario, self::$senha) 
                 or die("Falha ao tentar acessar banco de dados.");
@@ -40,9 +40,42 @@ class Conexao {
         return $link;
         
     }
+    
+    /*
+     * @Método: realiza operação select no bd.
+     * @Parâmetros: chave primária por array
+     * @Retorno: o mesmo tipo que o retorno de mysqli_query.
+     *          A consulta retornará tudo se $idPk for inválido e/ou inexistir,
+     *          Ou filtra a consulta, se $idPk for válido.
+     */
+    abstract protected static function getConsulta($idPk = null);
+    
+    /*
+     * @Método: salva as alterações da instância no banco de dados
+     *          (cria uma nova linha no banco se não existir, ou a altera se existir).
+     * @Parâmetros: nenhum, usa os atributos da instância.
+     * @Retorno: true se os atributos serem válidos e a persistência ocorrer
+     * com sucesso; false se ocorrer algum erro de integridade ou acesso.
+     */
+    abstract protected function persistir();
+    
+    /*
+     * @Método: realiza operação update no bd.
+     * @Parâmetros: nenhum, usa os atributos da instância.
+     * @Retorno: true se os atributos serem válidos e a persistência ocorrer
+     * com sucesso; false se ocorrer algum erro de integridade ou acesso.
+     */
+    abstract protected function atualizar();
+    
+    /*
+     * @Método: realiza operação insert no bd.
+     * @Parâmetros: nenhum, usa os atributos da instância, a chave primária não
+     *              precisa estar definida.
+     * @Retorno: true se os atributos serem válidos e a persistência ocorrer
+     * com sucesso; false se ocorrer algum erro de integridade ou acesso.
+     */
+    abstract protected function criar();
 
 }
-
-$con = Conexao::criar();
 
 ?>
