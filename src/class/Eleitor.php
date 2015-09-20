@@ -15,7 +15,7 @@ class Eleitor extends Conexao{
     private $matricula;
     // id da chapa em que votou
     private $chapa_votada;
-    // hora e data em que ele votou
+    // hora e data em que o voto foi registrado no banco de dados
     private $momento_voto;
     
     /*
@@ -53,8 +53,8 @@ class Eleitor extends Conexao{
      *          false caso dê algum erro de integridade ou acesso.
      */
     public function votar($id_chapa){
-        // TODO
-        return true;
+        if (is_int($id_chapa))
+            $this->chapa_votada = $id_chapa;
     }
     
     
@@ -62,7 +62,21 @@ class Eleitor extends Conexao{
     * @Override
     */
     public function atualizar(){
-        // TODO
+        if (!isset($this->id)) // então ainda não existe pra ser atualizado
+            return false;
+        
+        // verifica se o campo de voto deve ser atualizado.
+        if (isset($this->chapa_votada)){
+            $sql = "update usuario";
+            $sql .= " set chapa_votada=$this->chapa_votada, momento_voto=current_timestamp()";
+            $sql .= " where id=$this->id";
+            
+            return mysqli_query(parent::abrir(), $sql);
+            
+        } else{
+            return false;
+        }
+        
     }
     
     /*
@@ -77,7 +91,13 @@ class Eleitor extends Conexao{
     * @Override
     */
     public static function getConsulta($idPk = null){
-        // TODO
+        $sql = "select * from usuario";
+        
+        if (isset($idPk) && is_int($idPk)){
+            $sql .= " where id=$idPk";
+        }
+        
+        return mysqli_query(parent::abrir(), $sql);
     }
     
     /*
@@ -87,7 +107,8 @@ class Eleitor extends Conexao{
      *          tendo a query sido devidamente filtrada por $matrícula.
      */
     public static function getConsultaPorMatricula($matricula){
-        // TODO
+        $sql = "select * from usuario where matricula=$matricula";
+        return mysqli_fetch_array(mysqli_query(parent::abrir(), $sql));
     }
     
 }
