@@ -3,24 +3,28 @@ session_start();
 
 $_SESSION["membro_comite"] = "20121044010247"; // DEV TESTS ----------- REMOVER ESTA LINHA DEPOIS DE IMPLEMENTADO LOGIN
 
-// caminhos a qual redirecionar
-define("PATH_SEGUINTE", "../painel_comissao.php/");
-define("PATH_ACESSO_NEGADO", "../painel_comissao.php/");
+
+// cabeçalhos com caminhos a qual redirecionar, com possívels flag get
+const H_SUCESSO = "location: ../painel_comissao.php?ok=true";
+const H_FALHA = "location: ../painel_comissao.php?erro=true";
+
 
 if (isset($_POST["matricula"]) && isset($_SESSION["membro_comite"])){ // auth
     
     include "../class/Eleitor.php";
     
-    $novo_eleitor = new Eleitor(null, $_POST["matricula"]);
+    $novo_eleitor = new Eleitor(null, addslashes($_POST["matricula"]));
     
     if($novo_eleitor->criar()){
-        header("Location: ".PATH_SEGUINTE."?ok="); // passa flag get indicando sucesso
+        header(H_SUCESSO);
+    
     } else{
-        die("Falha ao persistir no banco de dados.");
+        header(H_FALHA);
+    
     }
     
 } else{
-    header("Location: ".PATH_ACESSO_NEGADO);
+    die("Acesso negado.");
 }
 
 ?>

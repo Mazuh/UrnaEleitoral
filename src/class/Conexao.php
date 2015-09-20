@@ -24,8 +24,8 @@ abstract class Conexao {
      *          OU
      *           aplicação die() e exibe erro.
      */
-    protected static function getConexao() {
-        
+    protected static function abrir() {
+    
         $link = mysqli_connect(self::$host, self::$usuario, self::$senha) 
                 or die("Falha ao tentar acessar banco de dados.");
         

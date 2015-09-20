@@ -31,13 +31,13 @@ class Eleitor extends Conexao{
     public function __construct($res = null, $matricula = null) {
         
         if (isset($res)){
-            $this->$id = $res["id"];
-            $this->$matricula = $res["matricula"];
-            $this->$chapa_votada = $res["chapa_votada"];
-            $this->$momento_voto = $res["momento_voto"];
+            $this->id = $res["id"];
+            $this->matricula = $res["matricula"];
+            $this->chapa_votada = $res["chapa_votada"];
+            $this->momento_voto = $res["momento_voto"];
             
         } else if(isset($matricula)){
-            $this->$matricula = $matricula;
+            $this->matricula = $matricula;
             
         } else{
             echo "Atenção >> Esperado parâmetro na instância do usuário.";
@@ -69,7 +69,8 @@ class Eleitor extends Conexao{
     * @Override
     */
     public function criar(){
-        return true;
+        $sql = "insert into usuario (matricula) values ('$this->matricula')";
+        return mysqli_query(parent::abrir(), $sql);
     }
     
     /*
