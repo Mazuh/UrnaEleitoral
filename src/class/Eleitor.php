@@ -49,12 +49,14 @@ class Eleitor extends Conexao{
     /*
      * @Método: marca em qual chapa o eleitor votou.
      * @Parâmetros: id da Chapa em que o usuário vai votar.
-     * @Retorno: true se o valor for um id de Chapa válido e existente;
-     *          false caso dê algum erro de integridade ou acesso.
+     * @Retorno: TODO: true se o valor for um id numérico; false caso não.
      */
     public function votar($id_chapa){
-        if (is_int($id_chapa))
+        if (is_int($id_chapa)){
             $this->chapa_votada = $id_chapa;
+            return true;
+        }
+        return false;
     }
     
     
@@ -107,7 +109,7 @@ class Eleitor extends Conexao{
      *          tendo a query sido devidamente filtrada por $matrícula.
      */
     public static function getConsultaPorMatricula($matricula){
-        $sql = "select * from usuario where matricula=$matricula";
+        $sql = "select * from usuario where matricula='$matricula'";
         return mysqli_fetch_array(mysqli_query(parent::abrir(), $sql));
     }
     
