@@ -51,19 +51,10 @@ abstract class Conexao {
     abstract protected static function getConsulta($idPk = null);
     
     /*
-     * @Método: salva as alterações da instância no banco de dados
-     *          (cria uma nova linha no banco se não existir, ou a altera se existir).
-     * @Parâmetros: nenhum, usa os atributos da instância.
-     * @Retorno: true se os atributos serem válidos e a persistência ocorrer
-     * com sucesso; false se ocorrer algum erro de integridade ou acesso.
-     */
-    abstract protected function persistir();
-    
-    /*
      * @Método: realiza operação update no bd.
      * @Parâmetros: nenhum, usa os atributos da instância.
      * @Retorno: true se os atributos serem válidos e a persistência ocorrer
-     * com sucesso; false se ocorrer algum erro de integridade ou acesso.
+     *          com sucesso; false se ocorrer algum erro de integridade ou acesso.
      */
     abstract protected function atualizar();
     
@@ -72,7 +63,7 @@ abstract class Conexao {
      * @Parâmetros: nenhum, usa os atributos da instância, a chave primária não
      *              precisa estar definida.
      * @Retorno: true se os atributos serem válidos e a persistência ocorrer
-     * com sucesso; false se ocorrer algum erro de integridade ou acesso.
+     *          com sucesso; false se ocorrer algum erro de integridade ou acesso.
      */
     abstract protected function criar();
 

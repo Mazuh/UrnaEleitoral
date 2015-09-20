@@ -14,7 +14,7 @@ class Eleitor extends Conexao{
     // matrícula do eleitor
     private $matricula;
     // id da chapa em que votou
-    private $voto;
+    private $chapa_votada;
     // hora e data em que ele votou
     private $momento_voto;
     
@@ -23,11 +23,27 @@ class Eleitor extends Conexao{
      * @Parâmetros: objeto da linha de um resultado mysqli_fetch_array, matriz associativa.
      *              OU
      *              string de matrícula válida e existente.
-     * @Instância: se parâmetro for $res, cria objeto criado com atributos do bd consultado
-     *             se parâmetro for $matricula, cria novo objeto sem atributos
+     *              (sem nenhum parâmetro o objeto instanciado será inútil)
+     * @Instância: se parâmetro for $res, cria objeto criado com atributos do bd consultado;
+     *             se parâmetro for $matricula, cria novo objeto sem atributos;
+     *             se nenhum parâmetro for passado, objeto "oco" é instanciado, e warning é echoada.
      */
     public function __construct($res = null, $matricula = null) {
-        // TODO
+        
+        if (isset($res)){
+            $this->$id = $res["id"];
+            $this->$matricula = $res["matricula"];
+            $this->$chapa_votada = $res["chapa_votada"];
+            $this->$momento_voto = $res["momento_voto"];
+            
+        } else if(isset($matricula)){
+            $this->$matricula = $matricula;
+            
+        } else{
+            echo "Atenção >> Esperado parâmetro na instância do usuário.";
+            
+        }
+        
     }
 
     /*
@@ -38,7 +54,6 @@ class Eleitor extends Conexao{
      */
     public function votar($id_chapa){
         // TODO
-        $voto = $id_chapa;
         return true;
     }
     
@@ -46,21 +61,15 @@ class Eleitor extends Conexao{
     /*
     * @Override
     */
-    public function persistir(){
-        // TODO
-    }/*
-    
-    * @Override
-    */
-    protected function atualizar(){
+    public function atualizar(){
         // TODO
     }
     
     /*
     * @Override
     */
-    protected function criar(){
-        // TODO
+    public function criar(){
+        return true;
     }
     
     /*
@@ -73,9 +82,8 @@ class Eleitor extends Conexao{
     /*
      * @Método: realiza operação select no bd com filtro por campo matrícula.
      * @Parâmetros: valor do campo matrícula
-     * @Retorno: o mesmo tipo que o retorno de mysqli_query.
-     *          A consulta retornará tudo se $matricula for inválida e/ou inexistir,
-     *          Ou filtra a consulta, se $matricula for válida.
+     * @Retorno: o mesmo tipo que o retorno (matriz associativa) de mysqli_fetch_array(mysqli_query),
+     *          tendo a query sido devidamente filtrada por $matrícula.
      */
     public static function getConsultaPorMatricula($matricula){
         // TODO
