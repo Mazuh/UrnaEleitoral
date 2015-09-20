@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title> Urna eleitoral </title>
-		<link rel="stylesheet" href="urna.css" type="text/css">
+		<link rel="stylesheet" href="painel_urna.css" type="text/css">
 	</head>
 
 	<body>
