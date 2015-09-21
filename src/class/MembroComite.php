@@ -3,7 +3,7 @@
 include "Eleitor.php";
 
 /*
- * @Classe: as instâncias serão cada candidato, com seus devidos poderes e atributos;
+ * @Classe: as instâncias serão cada membro de comitê, com seus devidos poderes e atributos;
  *          também é objeto de acesso ao banco de dados (DAO)
  * @Tabela: usuario
  */
