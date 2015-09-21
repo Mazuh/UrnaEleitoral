@@ -4,16 +4,23 @@
 	<head>
 		<meta charset="utf-8">
 		<title> Urna eleitoral </title>
-		<link rel="stylesheet" href="painel_urna.css" type="text/css">
+		<link rel="stylesheet" href="urna.css" type="text/css">
 	</head>
 
 	<body>
 		<div id="urna">
 			<div id="tela-urna">
 				<?php 
-					echo (!isset($_GET['voto']))?"<h1>Vote no seu candidato!</h1>":"";
-					$voto = $_GET['voto'];
-
+					$id = 1;
+					
+					if (!isset($_GET['voto'])) {
+						echo "<h1>Vote no seu candidato!</h1>";
+							
+					} else {
+						$voto = $_GET['voto'];
+						
+					}
+					
 					echo (!isset($_GET['valor']))?"":"<h2>Voto computado com sucesso!</h2>";
 				?>
 			</div>
@@ -36,7 +43,7 @@
 
 				<a href="verificarvoto.php?voto=nulo"><button type="submit" value="nulo" id="nulo">Nulo</button></a>
 				<a href="urna.php"><button type="submit" value="corrigir" id="corrigir">Corrigir</button></a>
-				<a href="<?php echo (!isset($_GET['voto']))?'urna.php':'verificarvoto.php?voto=confirmar&valor='.$voto; ?>"><button type="submit" value="confirmar" id="confirmar">Confirmar</button></a>
+				<a href="<?php echo (!isset($_GET['voto']))?'urna.php':'verificarvoto.php?id='.$id.'&voto=confirmar&valor='.$voto; ?>"><button type="hidden" value="confirmar" id="confirmar">Confirmar</button></a>
 
 			</div>
 		</div>
