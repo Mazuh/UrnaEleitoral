@@ -1,6 +1,6 @@
 <?php
 
-include "Conexao.php";
+include "Eleitor.php";
 
 /*
  * @Classe: as instâncias serão cada candidato, com seus devidos poderes e atributos;
