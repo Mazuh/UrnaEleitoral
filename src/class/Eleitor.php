@@ -22,7 +22,7 @@ class Eleitor extends Conexao{
      * @Construtor: retorna instância já existente no bd ou não.
      * @Parâmetros: objeto da linha de um resultado mysqli_fetch_array, matriz associativa.
      *              OU
-     *              string de matrícula válida e existente.
+     *              string de matrícula válida.
      *              (sem nenhum parâmetro o objeto instanciado será inútil)
      * @Instância: se parâmetro for $res, cria objeto criado com atributos do bd consultado;
      *             se parâmetro for $matricula, cria novo objeto sem atributos;
