@@ -105,3 +105,13 @@ body{background: #DCDCDC;}
 			#nulo{
 				background: #CCC;
 			}
+
+			a{
+				color: white;
+				text-decoration: none;
+			}
+
+			h1, h2{
+				text-align: center;
+				line-height: 350px;
+			}
