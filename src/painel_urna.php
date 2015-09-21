@@ -15,13 +15,35 @@
 					
 					if (!isset($_GET['voto'])) {
 						echo "<h1>Vote no seu candidato!</h1>";
-							
+			
 					} else {
 						$voto = $_GET['voto'];
-						
+						echo "<h3>Seu voto para:</h3>";
+
+						if ($voto == 1) {
+							echo "<h4>Chapa: Super Ação</h4>";
+							echo "<h4>Presidente: Samara</h4>";
+							echo "<img src='/img/superacao.png' alt='chapa1'/>";
+							echo "<h4>Aperte CONFIRMAR para efetuar seu voto!</h4>";
+			
+						} elseif ($voto == 2) {
+							echo "<h4>Chapa: IAE </h4>";
+							echo "<h4>Presidente: Fabrício</h4>";
+							echo "<img src='/img/iae.png' alt='chapa2'/>";
+							echo "<h4>Aperte CONFIRMAR para efetuar seu voto!</h4>";
+
+						} else {
+							echo "<h4>Chapa: Nulo</h4>";
+							echo "<h4>Presidente: Nulo</h4>";
+							echo "<img src='/img/nulo.png' id='img-nulo' alt='nulo'/>";	
+							echo "<h4>Aperte CONFIRMAR para efetuar seu voto!</h4>";
+						}
+												
 					}
 					
 					echo (!isset($_GET['valor']))?"":"<h2>Voto computado com sucesso!</h2>";
+
+
 				?>
 			</div>
 			<div id="tela-botoes">
@@ -44,9 +66,18 @@
 				<a href="verificarvoto.php?voto=nulo"><button type="submit" value="nulo" id="nulo">Nulo</button></a>
 				<a href="urna.php"><button type="submit" value="corrigir" id="corrigir">Corrigir</button></a>
 				<a href="<?php echo (!isset($_GET['voto']))?'urna.php':'verificarvoto.php?id='.$id.'&voto=confirmar&valor='.$voto; ?>"><button type="hidden" value="confirmar" id="confirmar">Confirmar</button></a>
-
+			
 			</div>
 		</div>
+		<div class="panel-footer">
+            <p>
+            	<a href="https://opensource.org/licenses/MIT">MIT License (MIT)</a> 
+                	Copyright (c) 2015
+                <a href="https://github.com/Mazuh/UrnaEleitoral-GremioIFRNZN">
+                    Marcell Guilherme & Yuri Henrique
+                </a>
+            </p> 
+        </div>
 	</body>
 
 </html>
