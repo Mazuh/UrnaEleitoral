@@ -1,11 +1,13 @@
 <?php
-	$voto = $_GET['voto'];
-
-	if ($voto == "confirmar") {
-		header("Location: painel_urna.php?voto=$voto&valor=1");
+	$valor = $_REQUEST['voto'];
+	$id = $_REQUEST['id'];
+	$voto = $_REQUEST['valor'];
+	
+	if ($valor == "confirmar") {
+		header("Location: script/registrar_voto.php?id=$id&voto=$voto");
 
 	} else { 
-		header("Location: painel_urna.php?voto=$voto");
+		header("Location: urna.php?voto=$valor");
 	}
 
 ?>
