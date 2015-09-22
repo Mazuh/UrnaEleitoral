@@ -16,14 +16,14 @@ function voto_oculto(){
 
 function digitar(num){
     tela().innerHTML = num;
-    voto_oculto().innerHTML = num;
+    voto_oculto().setAttribute("value", num);
 }
 
 function corrige(){
     tela().innerHTML = VAZIA;
-    voto_oculto().innerHTML = "";
+    voto_oculto().setAttribute("value", "");
 }
 
 function confirma(){
-    return ((tela().innerHTML != VAZIA) && (voto_oculto().innerHTML != ""));
+    return ((tela().innerHTML != VAZIA) && (voto_oculto().getAttribute("value") != ""));
 }

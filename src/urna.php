@@ -51,7 +51,7 @@ if (isset($_REQUEST["voto"])){
     <body>
         <form id="urna" method="post" action="script/votar.php" onsubmit="return confirma()">
             <?php echo "<input type='hidden' name='eleitor' value='$id_eleitor'/>"; ?>
-            <?php echo "<input type='hidden' name='voto' value=''/>"; ?>
+            <?php echo "<input type='hidden' id='voto' name='voto' value=''/>"; ?>
             
             <div id="tela-urna">
                 
