@@ -39,8 +39,8 @@ $usuario = unserialize($_SESSION["membro_comite"]) or die("Você não está auto
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-lg btn-block">Acessar urna do eleitor</button> 
-                                <a href="resultadofinal.php"><button class="btn btn-primary btn-lg btn-block" type="button">Ver resultado final</button></a>
-                                <a href="script/sair.php"><button class="btn btn-danger btn-lg btn-block">Sair</button></a>
+                                <a href="resultado_final.php"><button class="btn btn-primary btn-lg btn-block" type="button">Ver resultado final</button></a>
+                                <a href="script/sair.php"><button type="button" class="btn btn-danger btn-lg btn-block">Sair</button></a>
                             </div>
                         </div>
                         

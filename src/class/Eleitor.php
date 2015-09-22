@@ -45,7 +45,7 @@ class Eleitor extends Conexao{
     }
     
     /*
-    * @Método: getter da matrícular.
+    * @Método: getter da matrícula.
     * @Retorno: o valor do atributo matrícula da instância.
     */
     public function getMatricula(){
@@ -58,6 +58,14 @@ class Eleitor extends Conexao{
     */
     public function jaVotou(){
         return isset($this->chapa_votada) && $this->chapa_votada != null;
+    }
+    
+    /*
+    * @Método: getter da momento_voto.
+    * @Retorno: o valor do atributo do momento_voto da instância.
+    */
+    public function getMomentoVoto(){
+        return $this->momento_voto;
     }
 
     /*
@@ -137,6 +145,11 @@ class Eleitor extends Conexao{
         }
     }
     
+    /*
+     * @Método: realiza consulta no bd em busca de usuários que votaram em determinada chapa
+     * @Parâmetros: valor do campo chapa_votada
+     * @Retorno: o mesmo tipo que mysqli_query.
+     */
     public static function getConsultaPorChapa($id_chapa_votada){
         $id_chapa_votada = intval($id_chapa_votada);
         $sql = "select * from usuario where chapa_votada=$id_chapa_votada";

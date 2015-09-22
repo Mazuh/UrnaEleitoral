@@ -78,20 +78,20 @@ if (isset($_REQUEST["voto"])){
                     echo "<h1>";
                     if ($voto != -1){
                         // voto não nulo
-                        echo "Voto confirmado:<br/>".$chapa_votada->getNome();
+                        echo "Voto confirmado:<br/>".$chapa_votada->getNome()."</h1>";
                     }else{
                         // script retornou flag de nulo/erro, verificar!
                         if ($eleitor->jaVotou()){ 
                             // então flag foi de erro
-                            echo "Você já votou.";
+                            echo "</h1><p style='text-align: center'><small>Já foi registrado um voto para sua matrícula em<br/>";
+                            echo $eleitor->getMomentoVoto() . "</small></p>";
                         }else{
                             // votou nulo mesmo
-                            echo "Voto nulo confirmado.";
+                            echo "Voto nulo confirmado.</h1>";
                         }
                     }
-                    echo "</h1>";
                     echo "<h2>Sua contribuição é muito importante, obrigado!</h2>";
-                    echo "<h4>Aguarde, a página irá expirar em 7s.</h4>";
+                    echo "<h4 style='text-align: center'>Aguarde, a página irá expirar em 7 segundos...</h4>";
                     echo "<script>esperarAndRedirecionar()</script>"; // redireciona!
                 } else{
                     echo "<h1>Faça sua votação!</h1>";
