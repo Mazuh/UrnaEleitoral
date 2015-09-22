@@ -12,7 +12,8 @@ function __autoload($file){
 
 // auth
 if (isset($_REQUEST["eleitor"])){
-    $consulta = Eleitor::getConsulta(intval($_REQUEST["eleitor"])); 
+    $id_eleitor = $_REQUEST["eleitor"];
+    $consulta = Eleitor::getConsulta(intval($id_eleitor)); 
     $res = mysqli_fetch_array($consulta) or die("Acesso negado.");
 
     $eleitor = new Eleitor($res, null);
@@ -44,13 +45,19 @@ if (isset($_REQUEST["voto"])){
         <meta charset="utf-8">
         <title>Urna eleitoral</title>
         <link rel="stylesheet" href="css/urna.css" type="text/css">
+        <script src="js/urna.js" type="text/javascript"></script>
     </head>
 
     <body>
-        <div id="urna">
+        <form id="urna" method="post" action="script/votar.php" onsubmit="return confirma()">
+            <?php echo "<input type='hidden' name='eleitor' value='$id_eleitor'/>"; ?>
+            <?php echo "<input type='hidden' name='voto' value=''/>"; ?>
+            
             <div id="tela-urna">
                 
                 <?php
+
+                echo "<h3 style='text-align: center'>Eleitor ".$eleitor->getMatricula()."<h3>";
 
                 if (isset($voto)){
                     echo "<h1>";
@@ -62,7 +69,7 @@ if (isset($_REQUEST["voto"])){
                     echo "<h2>Sua contribuição é muito importante, obrigado!</h2>";
                 } else{
                     echo "<h1>Faça sua votação!</h1>";
-                    echo "<h2 id='in'>_ _<h2>";
+                    echo "<h2 id='in'>_<h2>";
                 }
 
                 ?>
@@ -84,12 +91,12 @@ if (isset($_REQUEST["voto"])){
                     <button type="button" onclick="digitar(0)" id="n0">0</button>
                 </div>
 
-                <button id="nulo" type="submit" onclick="">Nulo</button>
-                <button id="corrigir" type="button" onclick="">Corrigir</button>
-                <button id="confirmar" type="submit" onclick="">Confirmar</button>
+                <button id="nulo" type="submit" onclick="digitar(0)">Nulo</button>
+                <button id="corrigir" type="button" onclick="corrigir()">Corrigir</button>
+                <button id="confirmar" type="submit">Confirmar</button>
 
             </div>
-        </div>
+        </form>
         <div class="panel-footer">
             <p>
                 <a href="https://opensource.org/licenses/MIT">MIT License (MIT)</a> 

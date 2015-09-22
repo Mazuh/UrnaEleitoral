@@ -45,6 +45,14 @@ class Eleitor extends Conexao{
     }
     
     /*
+    * @Método: getter da matrícular.
+    * @Retorno: o valor do atributo matrícula da instância.
+    */
+    public function getMatricula(){
+        return $this->matricula;
+    }
+    
+    /*
     * @Método: informa se a instância já tem voto.
     * @Retorno: true se já atributo de voto tiver um valor.
     */
