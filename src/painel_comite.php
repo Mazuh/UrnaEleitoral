@@ -1,6 +1,14 @@
 <?php
 session_start();
 
+function __autoload($file){
+    if(file_exists('class/' . $file . '.php')){
+        require_once('class/' . $file . '.php');
+    } else{
+        exit('O arquivo ' . $file . ' não encontrado.');
+    }
+}
+
 // auth
 $usuario = unserialize($_SESSION["membro_comite"]) or die("Você não está autorizado a ver esta página.");
 
@@ -17,6 +25,18 @@ $usuario = unserialize($_SESSION["membro_comite"]) or die("Você não está auto
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
+        <script type="text/javascript">
+            
+            function pedirMatricula(){
+                var matricula = window.prompt("Membro do comitê, confirme sua matrícula se deseja realmente ver os resultados finais:");
+                if (matricula == "<?php echo $usuario->getMatricula() ; ?>"){
+                    window.location = "resultado_final.php";
+                } else{
+                    alert("Tá bom. Vou esquecer que você clicou aí.");
+                }
+            }
+        </script>
+        
     </head>
 
     <body style="background: #DCDCDC;"> 
@@ -39,7 +59,7 @@ $usuario = unserialize($_SESSION["membro_comite"]) or die("Você não está auto
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-lg btn-block">Acessar urna do eleitor</button> 
-                                <a href="resultado_final.php"><button class="btn btn-primary btn-lg btn-block" type="button">Ver resultado final</button></a>
+                                <button class="btn btn-primary btn-lg btn-block" type="button" onclick="pedirMatricula()">Ver resultado final</button>
                                 <a href="script/sair.php"><button type="button" class="btn btn-danger btn-lg btn-block">Sair</button></a>
                             </div>
                         </div>

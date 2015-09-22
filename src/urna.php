@@ -72,7 +72,7 @@ if (isset($_REQUEST["voto"])){
                 
                 <?php
 
-                echo "<h3 style='text-align: center'>Eleitor ".$eleitor->getMatricula()."<h3>";
+                echo "<h3 style='text-align: center'>Eleitor ".$eleitor->getMatricula()."</h3>";
 
                 if (isset($voto)){
                     echo "<h1>";
@@ -83,8 +83,7 @@ if (isset($_REQUEST["voto"])){
                         // script retornou flag de nulo/erro, verificar!
                         if ($eleitor->jaVotou()){ 
                             // então flag foi de erro
-                            echo "</h1><p style='text-align: center'><small>Já foi registrado um voto para sua matrícula em<br/>";
-                            echo $eleitor->getMomentoVoto() . "</small></p>";
+                            echo "</h1><p style='text-align: center'><small>Já foi registrado um voto para sua matrícula nesta eleição.</small></p>";
                         }else{
                             // votou nulo mesmo
                             echo "Voto nulo confirmado.</h1>";
