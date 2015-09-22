@@ -1,7 +1,5 @@
 <?php
 
-include "Conexao.php";
-
 /*
  * @Classe: as instâncias serão cada chapa, com seus devidos poderes e atributos;
  *          também é objeto de acesso ao banco de dados (DAO)
@@ -71,7 +69,7 @@ class Chapa extends Conexao{
     /*
     * @Override
     */
-    protected static function getConsulta($idPk = null){
+    public static function getConsulta($idPk = null){
         $sql = "select * from chapa";
         
         if (isset($idPk) && is_int($idPk)){

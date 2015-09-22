@@ -1,7 +1,5 @@
 <?php
 
-include "Conexao.php";
-
 /*
  * @Classe: as instâncias serão cada eleitor, com seus devidos poderes e atributos;
  *          também é oobjeto de acesso ao banco de dados (DAO)
