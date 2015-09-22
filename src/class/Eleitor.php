@@ -10,13 +10,13 @@ include "Conexao.php";
 class Eleitor extends Conexao{
     
     // representa chave primária do banco de dados, identificador único
-    private $id;    
+    protected $id;    
     // matrícula do eleitor
-    private $matricula;
+    protected  $matricula;
     // id da chapa em que votou
-    private $chapa_votada;
+    protected  $chapa_votada;
     // hora e data em que o voto foi registrado no banco de dados
-    private $momento_voto;
+    protected  $momento_voto;
     
     /*
      * @Construtor: retorna instância já existente no bd ou não.
@@ -31,10 +31,10 @@ class Eleitor extends Conexao{
     public function __construct($res = null, $matricula = null) {
         
         if (isset($res)){
-            $this->id = $res["id"];
+            $this->id = intval($res["id"]);
             $this->matricula = $res["matricula"];
-            $this->chapa_votada = $res["chapa_votada"];
-            $this->momento_voto = $res["momento_voto"];
+            $this->chapa_votada = intval($res["chapa_votada"]);
+            $this->momento_voto = intval($res["momento_voto"]);
             
         } else if(isset($matricula)){
             $this->matricula = $matricula;
@@ -45,18 +45,27 @@ class Eleitor extends Conexao{
         }
         
     }
+    
+    /*
+    * @Método: informa se a instância já tem voto.
+    * @Retorno: true se já atributo de voto tiver um valor.
+    */
+    public function jaVotou(){
+        return isset($this->chapa_votada) && $this->chapa_votada != null;
+    }
 
     /*
      * @Método: marca em qual chapa o eleitor votou.
-     * @Parâmetros: id da Chapa em que o usuário vai votar.
-     * @Retorno: TODO: true se o valor for um id numérico; false caso não.
+     * @Parâmetros: int id da Chapa em que o usuário vai votar.
+     * @Retorno: true se a não havia voto (e agora, há); false se a instância já havia votado.
      */
     public function votar($id_chapa){
-        if (is_int($id_chapa)){
-            $this->chapa_votada = $id_chapa;
+        if (!$this->jaVotou()){
+            $this->chapa_votada = intval($id_chapa);
             return true;
         }
         return false;
+        
     }
     
     
@@ -67,8 +76,8 @@ class Eleitor extends Conexao{
         if (!isset($this->id)) // então ainda não existe pra ser atualizado
             return false;
         
-        // verifica se o campo de voto deve ser atualizado.
-        if (isset($this->chapa_votada)){
+        // verifica se o campo de voto existe para ser atualizado
+        if ($this->jaVotou()){
             $sql = "update usuario";
             $sql .= " set chapa_votada=$this->chapa_votada, momento_voto=current_timestamp()";
             $sql .= " where id=$this->id";
@@ -95,7 +104,8 @@ class Eleitor extends Conexao{
     public static function getConsulta($idPk = null){
         $sql = "select * from usuario";
         
-        if (isset($idPk) && is_int($idPk)){
+        if (isset($idPk)){
+            $idPk = intval($idPk);
             $sql .= " where id=$idPk";
         }
         
@@ -109,8 +119,17 @@ class Eleitor extends Conexao{
      *          tendo a query sido devidamente filtrada por $matrícula.
      */
     public static function getConsultaPorMatricula($matricula){
+        $matricula = addslashes($matricula);
         $sql = "select * from usuario where matricula='$matricula'";
         return mysqli_fetch_array(mysqli_query(parent::abrir(), $sql));
+    }
+    
+    public static function getConsultaPorChapa($id_chapa_votada){
+        $id_chapa_votada = intval($id_chapa_votada);
+        $sql = "select * from usuario where chapa_votada=$id_chapa_votada";
+        
+        return mysqli_query(parent::abrir(), $sql);
+        
     }
     
 }

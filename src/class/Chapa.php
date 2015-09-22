@@ -42,6 +42,21 @@ class Chapa extends Conexao{
         
     }
     
+    /*
+    * @Método: getter do id
+    * @Retorno: atributo de id
+    */
+    public function getNum(){
+        return $this->id;
+    }
+    
+    /*
+    * @Método: getter do id
+    * @Retorno: atributo de id
+    */
+    public function getNome(){
+        return $this->nome;
+    }
     
     /*
     * @Override
@@ -52,7 +67,7 @@ class Chapa extends Conexao{
         return mysqli_query(parent::abrir(), $sql);
         //return false;
     }
-        
+    
     /*
     * @Override
     */

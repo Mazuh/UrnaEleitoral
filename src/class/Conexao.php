@@ -14,7 +14,7 @@ abstract class Conexao {
     private static $host = "localhost";
     // autenticação de acesso ao banco
     private static $usuario = "root";
-    private static $senha = "root";
+    private static $senha = "";
     // nome do banco de dados
     private static $bd = "eleicao_gremio2015";
 
