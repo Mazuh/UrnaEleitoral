@@ -61,10 +61,13 @@ if (isset($_REQUEST["voto"])){
 
                 if (isset($voto)){
                     echo "<h1>";
-                    if ($voto != -1)
+                    if ($voto != -1){
+                        // voto não nulo
                         echo "Voto confirmado:<br/>".$chapa_votada->getNome();
-                    else
+                    }else{
+                        // script retornou flag de nulo, verifica em quem o usuário votou
                         echo "Voto nulo confirmado.";
+                    }
                     echo "</h1>";
                     echo "<h2>Sua contribuição é muito importante, obrigado!</h2>";
                 } else{
@@ -74,7 +77,7 @@ if (isset($_REQUEST["voto"])){
 
                 ?>
             </div>
-            <div id="tela-botoes">
+            <div id="tela-botoes" disabled>
 
                 <button type="button" onclick="digitar(1)" id="n1">1</button>
                 <button type="button" onclick="digitar(2)" id="n2">2</button>

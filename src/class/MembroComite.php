@@ -1,14 +1,11 @@
 <?php
 
-include "Eleitor.php";
-include "Chapa.php";
-
 /*
  * @Classe: as instâncias serão cada membro de comitê, com seus devidos poderes e atributos;
  *          também é objeto de acesso ao banco de dados (DAO)
  * @Tabela: usuario
  */
-class MembroComite extends Eleitor{
+final class MembroComite extends Eleitor{
     
     private $membro_comite = 1;
     private $senha;
@@ -48,10 +45,19 @@ class MembroComite extends Eleitor{
         return $this->senha === $this->criptografar($senha);
     }
     
+    /*
+    * @Método: verifica se a senha argumentada é igual à encontrada nos atributos.
+    * @Parâmetros: string (descriptografada) da senha
+    * @Retorno: true se a senha for igual; false e não.
+    */
     public function getQtdVotosDaChapa($id_chapa_votada){
         return mysqli_num_rows(parent::getConsultaPorChapa($id_chapa_votada));
     }
     
+    /*
+    * @Método: conta quantas matrículas foram cadastradas no sistema
+    * @Retorno: inteiro correspondente ao num_rows da consulta.
+    */
     public function getQtdMatriculasCadastradas(){
         return mysqli_num_rows(parent::getConsulta());
     }

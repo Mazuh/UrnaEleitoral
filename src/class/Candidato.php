@@ -1,13 +1,13 @@
 <?php
 
-include "Eleitor.php";
+die("README: classe de candidato fora do escopo desta versão do sistema.");
 
 /*
  * @Classe: as instâncias serão cada candidato, com seus devidos poderes e atributos;
  *          também é objeto de acesso ao banco de dados (DAO)
  * @Tabela: usuario
  */
-class Candidato extends Eleitor{
+final class Candidato extends Eleitor{
     
     private $chapa_pertencente;
     

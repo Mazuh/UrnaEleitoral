@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
+        <!--<meta charset="utf-8">-->
         <title>Login</title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -23,12 +22,12 @@
 
                     </div>
                     <div class="modal-body">
-                        <form class="form col-md-12 center-block" method="post" action="script/efetuar_login.php">
+                        <form class="form col-md-12 center-block" method="post" action="script/logar.php">
                             <div class="form-group">
                                 
                                 <label class="text-center">Acesso restrito aos membros da Comissão Eleitoral 2015 do grêmio supracitado registrados pela Diretoria do campus. Se você não é um dos mesmos, prosseguir implicará em fraude eleitoral e medidas disciplinares serão tomadas.</label>
-                                <input type="number" class="form-control input-lg" placeholder="Digite sua matrícula">
-                                <input type="password" class="form-control input-lg" placeholder="Digite sua senha de acesso ao sistema">
+                                <input type="number" name="matricula" class="form-control input-lg" placeholder="Digite sua matrícula">
+                                <input type="password" name="senha" class="form-control input-lg" placeholder="Digite sua senha de acesso ao sistema">
                                 
                             </div>
                             <div class="form-group">

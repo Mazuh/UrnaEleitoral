@@ -123,11 +123,18 @@ class Eleitor extends Conexao{
      * @Parâmetros: valor do campo matrícula
      * @Retorno: o mesmo tipo que o retorno (matriz associativa) de mysqli_fetch_array(mysqli_query),
      *          tendo a query sido devidamente filtrada por $matrícula.
+     *          ou
+     *          false caso a consulta tenha retornado nada.
      */
     public static function getConsultaPorMatricula($matricula){
         $matricula = addslashes($matricula);
         $sql = "select * from usuario where matricula='$matricula'";
-        return mysqli_fetch_array(mysqli_query(parent::abrir(), $sql));
+        $consulta = mysqli_query(parent::abrir(), $sql);
+        if (mysqli_num_rows($consulta)){
+            return mysqli_fetch_array($consulta);
+        }else{
+            return false;
+        }
     }
     
     public static function getConsultaPorChapa($id_chapa_votada){

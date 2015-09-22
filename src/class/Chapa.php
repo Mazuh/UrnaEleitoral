@@ -5,7 +5,7 @@
  *          também é objeto de acesso ao banco de dados (DAO)
  * @Tabela: chapa
  */
-class Chapa extends Conexao{
+final class Chapa extends Conexao{
     
     // chave primária identificadora da chapa
     // também é o número identificador dela no momento de voto

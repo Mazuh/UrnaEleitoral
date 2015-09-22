@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+// auth
+$usuario = unserialize($_SESSION["membro_comite"]) or die("Você não está autorizado a ver esta página.");
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     
