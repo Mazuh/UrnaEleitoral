@@ -27,3 +27,12 @@ function corrige(){
 function confirma(){
     return ((tela().innerHTML != VAZIA) && (voto_oculto().getAttribute("value") != ""));
 }
+
+
+function esperarAndRedirecionar(){
+    setTimeout(redirecionar, 7000);
+}
+
+function redirecionar(){
+    window.location = "painel_comite.php";
+}

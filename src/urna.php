@@ -12,13 +12,28 @@ function __autoload($file){
 
 // auth
 if (isset($_REQUEST["eleitor"])){
+    // recebeu id do script da urna
     $id_eleitor = $_REQUEST["eleitor"];
     $consulta = Eleitor::getConsulta(intval($id_eleitor)); 
     $res = mysqli_fetch_array($consulta) or die("Acesso negado.");
 
     $eleitor = new Eleitor($res, null);
 
-} else{
+}else if(isset($_POST["matricula"])){
+    // recebeu matricula da página do comitê
+    if ($eleitor_res = Eleitor::getConsultaPorMatricula($_POST["matricula"])){
+        // já existe matrícula assim, blz.
+        $id_eleitor = $eleitor_res["id"];
+        $eleitor = new Eleitor($eleitor_res, null);
+    } else{
+        // não existe matricula assim, criar!
+        $eleitor = new Eleitor(null, $_POST["matricula"]);
+        $eleitor->criar();
+        $id_eleitor = Eleitor::getConsultaPorMatricula($_POST["matricula"])["id"];
+    }
+    
+}else{
+    // o diabo é quem sabe como tu foi parar aqui.
     die("Acesso negado.");
 }
 
@@ -65,11 +80,19 @@ if (isset($_REQUEST["voto"])){
                         // voto não nulo
                         echo "Voto confirmado:<br/>".$chapa_votada->getNome();
                     }else{
-                        // script retornou flag de nulo, verifica em quem o usuário votou
-                        echo "Voto nulo confirmado.";
+                        // script retornou flag de nulo/erro, verificar!
+                        if ($eleitor->jaVotou()){ 
+                            // então flag foi de erro
+                            echo "Você já votou.";
+                        }else{
+                            // votou nulo mesmo
+                            echo "Voto nulo confirmado.";
+                        }
                     }
                     echo "</h1>";
                     echo "<h2>Sua contribuição é muito importante, obrigado!</h2>";
+                    echo "<h4>Aguarde, a página irá expirar em 7s.</h4>";
+                    echo "<script>esperarAndRedirecionar()</script>"; // redireciona!
                 } else{
                     echo "<h1>Faça sua votação!</h1>";
                     echo "<h2 id='in'>_<h2>";
@@ -110,5 +133,5 @@ if (isset($_REQUEST["voto"])){
             </p> 
         </div>
     </body>
-
+    
 </html>

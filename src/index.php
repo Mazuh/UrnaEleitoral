@@ -17,7 +17,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
 
-                        <h2 class="text-center">Instituto Federal de Educalção, Ciência e Tecnologia do Rio Grande do Norte</h2>
+                        <h2 class="text-center">Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte</h2>
                         
                         <div class="text-center">
                             <img alt="logo-ifrn" src="img/logo-ifrn.png"/>

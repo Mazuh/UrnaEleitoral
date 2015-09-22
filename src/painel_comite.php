@@ -21,7 +21,6 @@ $usuario = unserialize($_SESSION["membro_comite"]) or die("Você não está auto
 
     <body style="background: #DCDCDC;"> 
 
-        <!--login modal-->
         <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -31,12 +30,12 @@ $usuario = unserialize($_SESSION["membro_comite"]) or die("Você não está auto
                         <h4 class="text-center">ACESSO À URNA ELEITORAL</h4>
                     </div>
                     
-                    <form class="modal-body">
+                    <form class="modal-body" method="post" action="urna.php">
                         
                         <div class="form col-md-12 center-block">
                             <div class="form-group">
                                 <label>Matrícula do eleitor:</label>
-                                <input type="number" class="form-control input-lg" placeholder="Matrícula">
+                                <input type="number" name="matricula" class="form-control input-lg" placeholder="Matrícula">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-lg btn-block">Acessar urna do eleitor</button> 
