@@ -22,7 +22,7 @@ if (isset($_POST["matricula"]) && isset($_POST["senha"])){
     if ($res_membroComite = MembroComite::getConsultaPorMatricula($matricula)){
         // é membro da comissão?
         if ($res_membroComite["membro_comite"] == 1){
-            $membroComite = new MembroComite(mysqli_fetch_array($consulta), null, null);
+            $membroComite = new MembroComite($res_membroComite, null, null);
             // senha correta?
             if ($membroComite->validaSenha($senha)){
                 // OK, cria sessão!
