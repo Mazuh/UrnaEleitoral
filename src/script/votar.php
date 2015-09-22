@@ -1,11 +1,17 @@
 <?php
 
+session_start();
+
 function __autoload($file){
     if(file_exists('../class/' . $file . '.php')){
         require_once('../class/' . $file . '.php');
     } else{
         exit('O arquivo ' . $file . ' não encontrado.');
     }
+}
+
+if (!isset($_SESSION["membro_comite"])){
+    die("Membro do comitê, faça o login para permitir que algum voto seja computado.");
 }
 
 // constante de cabeçalho para redirecionar à página da urna, espera valor pra flag get

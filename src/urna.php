@@ -77,7 +77,7 @@ if (isset($_REQUEST["voto"])){
 
                 ?>
             </div>
-            <div id="tela-botoes" disabled>
+            <div id="tela-botoes">
 
                 <button type="button" onclick="digitar(1)" id="n1">1</button>
                 <button type="button" onclick="digitar(2)" id="n2">2</button>

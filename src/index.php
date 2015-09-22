@@ -18,6 +18,11 @@
                     <div class="modal-header">
 
                         <h2 class="text-center">Instituto Federal de Educalção, Ciência e Tecnologia do Rio Grande do Norte</h2>
+                        
+                        <div class="text-center">
+                            <img alt="logo-ifrn" src="img/logo-ifrn.png"/>
+                        </div>
+                        
                         <h1 class="text-center">Sistema de Votação do Grêmio Estudantil Paulo Freire</h1>
 
                     </div>

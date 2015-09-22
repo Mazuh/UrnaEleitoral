@@ -74,7 +74,9 @@ final class MembroComite extends Eleitor{
         $qtd = 0;
         while ($chapa = mysqli_fetch_array($chapas)){
             // incrementa com a soma de cada usuário por chapa
-            $qtd += mysqli_num_rows(parent::getConsultaPorChapa($chapa->getNum()));
+            $consulta = parent::getConsultaPorChapa($chapa["id"]);
+            if ($consulta)
+                $qtd += mysqli_num_rows($consulta);
         }
         return $qtd;
     }
