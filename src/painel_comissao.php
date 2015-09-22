@@ -25,7 +25,7 @@
                 <h1 class="text-center">Urna Eletrônica Grêmio Paulo Freire - IFRN ZN</h1>
             </div>
             <div class="modal-body">
-                <label> *Cadastrar a matrícula do eleitor no banco </label>
+                <label>Acessar matrícula:</label>
                 <div class="form col-md-12 center-block">
                   <div class="form-group">
                     <input type="number" class="form-control input-lg" placeholder="Matrícula">
