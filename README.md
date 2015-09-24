@@ -8,7 +8,8 @@ de grêmio estudantil.
 <p>A priori, a única versão do sistema. Projetada para as 
 eleições 2015 do Grêmio Estudantil Paulo Freire (IFRN, Campus Natal, Zona Norte). 
 Desenvolvida a pedido e orientação do presidente do Comitê Eleitoral da eleição 
-supracitada, Edmilson Maria Soares Filho.</p>
+supracitada, Edmilson Maria Soares Filho. Esta versão, contudo, foi documentada e feita para ser
+melhorada e reutilizada em quaisquer situações, requerendo pouquíssimas modificações no código.</p>
 
 <h2>Segurança nativa</h2>
 <p>Técnicas básicas de segurança anti-hacking foram implementadas de modo que, se as 
@@ -18,7 +19,7 @@ a fraude eleitoral (a exceções listadas mais para frente deste texto).</p>
 seja dificultado consideravelmente a tentativa de SQL e script injection. Mesmo assim,
 foi considerada a possibilidade de escrita prévia de código e utilização de teclado virtual, 
 então tentativas simples para proteção anti-injection foram tomadas durante o código. Também
-foi tida atenção à possível situação de alguém tentar votar mais de uma vez.</p>
+foi tida atenção à possível situação de alguém tentar votar mais de uma vez, o que não é permitido.</p>
 <p>Em caso de falha do próprio sistema, é viável que seja feita uma espécie de auditoria futura,
 até mesmo pelos próprios eleitores, uma vez que o código armazena suas matrículas.
 Entretanto este recurso deve ser utilizado com extrema cautela (e disponibilizado de
@@ -27,13 +28,15 @@ eleitoral deve ser democrático e incorrompível por quaisquer reações que a q
 sigilo do voto possa causar.</p>
 
 <h2>Recomendações de segurança estrutural</h2>
-<p>Os desenvolvedores esperam que os membros do Comitê Eleitoral sejam íntegros, zelosos e de boa fé, já que foram
-lhes atribuídas responsabilidades democráticas de extremo peso, para executar as devidas
+<p>Os desenvolvedores esperam que os membros do Comitê Eleitoral sejam íntegros, zelosos e de boa fé, já que lhes
+foram atribuídas responsabilidades democráticas de extremo peso, para executar as devidas
 recomendações, pois são consideradas as mais importantes para a segurança e integridade do processo eleitoral.</p>
 <h4>Antes e durante as votações</h4>
 <ul>
-<li>O computador, código e servidores devem ser revisados pelos servidores do setor de TI do campus acompanhados
-do membros do Comitê Eleitoral e/ou outros interessados conhecedores da área;</li>
+<li>O computador (hardware e software), código e elementos correlatos da Informática devem ser revisados
+pelos servidores do setor de TI do campus acompanhados
+do membros do Comitê Eleitoral e/ou outros interessados conhecedores da área (preferencialmente os próprios
+desenvolvedores);</li>
 <li>Preferencialmente apenas o presidente do Comitê (e/ou um servidor do setor de TI) deve ter as senhas de acesso
 do computador (a saber, toda e qualquer senha, incluindo a do banco de dados, boot, manutenção, BIOS, super 
 usuário etc);</li>
