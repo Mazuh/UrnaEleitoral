@@ -6,10 +6,13 @@ de grêmio estudantil.
 
 <h1>Versão 1.0</h1>
 <p>A priori, a única versão do sistema. Projetada para as 
-eleições 2015 do Grêmio Estudantil Paulo Freire (IFRN, Campus Natal, Zona Norte). 
-Desenvolvida a pedido e orientação do presidente do Comitê Eleitoral da eleição 
-supracitada, Edmilson Maria Soares Filho. Esta versão, contudo, foi documentada e feita para ser
-melhorada e reutilizada em quaisquer situações, requerendo pouquíssimas modificações no código.</p>
+eleições 2015 do Grêmio Estudantil Paulo Freire (Instituto Federal de Educação, Ciência e Tecnologia
+do Rio Grande do Norte, Campus Natal - Zona Norte).  Desenvolvida a pedido e orientação do 
+presidente do Comitê Eleitoral da eleição supracitada, Edmilson Maria Soares Filho. 
+Esta versão, contudo, foi documentada e feita para ser melhorada e reutilizada em quaisquer 
+situações, requerendo pouquíssimas alterações no código. Inclusive,
+uma versão modificada (apenas textualmente) pelos próprios desenvolvedores foi usada para a eleição dos
+delegados do mesmo campus para o 41º Congresso Nacional da União Brasileira dos Estudantes Secundaristas.</p>
 
 <h2>Segurança nativa</h2>
 <p>Técnicas básicas de segurança anti-hacking foram implementadas de modo que, se as 
