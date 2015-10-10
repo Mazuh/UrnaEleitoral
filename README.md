@@ -1,7 +1,6 @@
-# Sistema de Votação de Chapas para Grêmio Estudantil
+# Sistema de urna eletrônica eleitoral
 <p>
-Uma urna eleitoral para realizar a automação segura e exata dos procedimentos de votação de chapas
-de grêmio estudantil.
+Uma urna eletrônica para realizar a automação segura e exata de procedimentos eleitorais.
 </p>
 
 <h1>Versão 1.0</h1>
